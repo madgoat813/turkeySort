@@ -82,9 +82,9 @@ public class Turkey implements Comparable{
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 71 * hash + (this.brand != null ? this.brand.hashCode() : 0);
-        hash = 71 * hash + this.turkeyID;
+        int hash = 3;
+        hash = 23 * hash + (int) (Double.doubleToLongBits(this.weight) ^ (Double.doubleToLongBits(this.weight) >>> 32));
+        hash = 23 * hash + this.turkeyID;
         return hash;
     }
 
@@ -97,7 +97,7 @@ public class Turkey implements Comparable{
             return false;
         }
         final Turkey other = (Turkey) obj;
-        if ((this.brand == null) ? (other.brand != null) : !this.brand.equals(other.brand)) {
+        if (Double.doubleToLongBits(this.weight) != Double.doubleToLongBits(other.weight)) {
             return false;
         }
         if (this.turkeyID != other.turkeyID) {
@@ -105,6 +105,8 @@ public class Turkey implements Comparable{
         }
         return true;
     }
+
+    
 
     
 
